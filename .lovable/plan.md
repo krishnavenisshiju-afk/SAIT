@@ -6,7 +6,7 @@ Build an original, fully responsive frontend prototype for SAIT that feels like 
 ## Visual Direction
 - Use the supplied warm palette: midnight navy, warm ivory, sand, charcoal, gold, olive, sage, beige, and dusty blue.
 - Pair bold editorial headings with highly legible body type, strong whitespace, thin borders, restrained shadows, and large rounded section containers.
-- Use original campus-and-technology imagery generated specifically for SAIT, with asymmetrical compositions rather than repetitive card grids.
+- Use neutral demo and reference-style campus-and-technology visuals without AI-generated imagery, arranged in asymmetrical compositions rather than repetitive card grids.
 - Keep motion subtle: entrance reveals, 2–4px lifts, gentle image zoom, smooth filters, counters, navbar transitions, and reduced-motion support.
 
 ## Pages and Content
