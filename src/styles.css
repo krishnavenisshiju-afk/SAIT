@@ -166,7 +166,161 @@
 @utility shadow-medium { box-shadow: 0 18px 55px color-mix(in oklab, var(--primary) 16%, transparent); }
 @utility pattern-grid { background-image: linear-gradient(color-mix(in oklab, var(--primary-foreground) 12%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--primary-foreground) 12%, transparent) 1px, transparent 1px); background-size: 48px 48px; }
 
+.sait-loading-overlay { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: hidden; background: var(--primary); opacity: 1; transform: scale(1); transition: opacity 400ms ease, transform 400ms ease; }
+.sait-loading-overlay.is-fading { opacity: 0; transform: scale(1.015); pointer-events: none; }
+.sait-loading-content { animation: sait-loading-content-in 500ms ease-out both; }
+.sait-loading-sparkle { position: absolute; width: 4px; height: 4px; border-radius: 999px; background: var(--gold); box-shadow: 0 0 10px color-mix(in oklab, var(--gold) 40%, transparent); animation: sait-loading-twinkle 3.5s ease-in-out infinite; }
+.sait-loading-square { width: 8px; height: 8px; border: 1px solid var(--gold); background: transparent; border-radius: 1px; }
+.sait-loading-progress { position: relative; width: min(240px, 70vw); height: 2px; overflow: visible; background: color-mix(in oklab, var(--primary-foreground) 20%, transparent); }
+.sait-loading-progress-fill { position: relative; display: block; height: 100%; background: var(--gold); transition: width 80ms linear; }
+.sait-loading-progress-fill::after { position: absolute; right: -1px; top: 50%; width: 8px; height: 8px; border-radius: 999px; background: var(--gold); box-shadow: 0 0 12px color-mix(in oklab, var(--gold) 70%, transparent); content: ""; transform: translateY(-50%); }
+
+@keyframes ambient-glow-drift {
+  0%, 100% { background-position: 15% 25%; }
+  50% { background-position: 85% 75%; }
+}
+
+@keyframes ambient-glow-pulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.9; }
+}
+
+.interactive-grid::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(circle 150px at var(--grid-x) var(--grid-y), color-mix(in oklab, var(--gold) 22%, transparent), transparent 72%),
+              radial-gradient(circle 550px at 50% 50%, color-mix(in oklab, var(--gold) 22%, transparent), transparent 65%);
+  background-size: 100% 100%, 220% 220%;
+  animation: ambient-glow-drift 7s ease-in-out infinite, ambient-glow-pulse 4s ease-in-out infinite;
+  opacity: calc(var(--grid-influence) * 0.7 + 0.7);
+  transition: opacity 200ms ease-out;
+}
+.mobile-menu { animation: mobile-menu-in 200ms ease-out both; transform-origin: top; }
+.route-page > .home-reveal { animation-duration: 150ms; }
+.route-page article { transition: transform 220ms ease, box-shadow 220ms ease; }
+.route-page article:hover { transform: translateY(-3px); box-shadow: 0 12px 40px color-mix(in oklab, var(--primary) 8%, transparent); }
+.route-page a > svg { transition: transform 200ms ease; }
+.route-page a:hover > svg { transform: translateX(2px); }
+.progress-ring-stroke { transition: stroke-dashoffset 850ms ease-out; }
+.people-card { transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }
+.people-card-avatar { transition: transform 250ms ease; }
+.people-card:hover .people-card-avatar { transform: scale(1.015); }
+.achievement-stat { transition: transform 250ms ease, box-shadow 250ms ease; }
+.achievement-stat:hover { transform: translateY(-3px); box-shadow: 0 12px 40px color-mix(in oklab, var(--primary) 8%, transparent); }
+.achievement-featured { transition: transform 250ms ease, border-color 250ms ease, box-shadow 250ms ease; }
+.achievement-featured:hover { transform: translateY(-3px); border-color: var(--gold); box-shadow: 0 16px 45px color-mix(in oklab, var(--primary) 14%, transparent); }
+.achievement-row { transition: background-color 220ms ease, padding-left 220ms ease; }
+.achievement-row:hover { background-color: color-mix(in oklab, var(--primary-foreground) 4%, transparent); padding-left: 0.5rem; }
+.dashboard-stat { transition: transform 250ms ease, box-shadow 250ms ease; }
+.dashboard-stat:hover { transform: translateY(-3px); box-shadow: 0 12px 40px color-mix(in oklab, var(--primary) 8%, transparent); }
+.leaderboard-row { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; border-bottom: 1px solid color-mix(in oklab, var(--primary-foreground) 10%, transparent); padding-bottom: 1rem; }
+.leaderboard-top strong { font-size: 1.05rem; }
+.status-badge { display: inline-flex; align-items: center; border-radius: 999px; padding: 0.25rem 0.7rem; font-size: 0.75rem; font-weight: 600; }
+.status-verified { background: color-mix(in oklab, var(--olive) 18%, transparent); color: var(--olive); }
+.status-pending { background: color-mix(in oklab, var(--gold) 22%, transparent); color: var(--foreground); }
+.status-rejected { background: color-mix(in oklab, var(--destructive) 14%, transparent); color: var(--destructive); }
+.about-value,
+.about-faculty,
+.placement-stat,
+.placement-resource { transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }
+.about-value:hover,
+.about-faculty:hover,
+.placement-stat:hover,
+.placement-resource:hover { transform: translateY(-3px); box-shadow: 0 12px 40px color-mix(in oklab, var(--primary) 8%, transparent); }
+.about-timeline article { transition: transform 220ms ease; }
+.about-timeline article:hover { transform: translateX(3px); }
+.placement-company { transition: color 200ms ease, background-color 200ms ease; }
+.placement-company:hover { color: var(--foreground); background-color: var(--secondary); }
+.alumni-featured,
+.alumni-profile,
+.alumni-note { transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }
+.alumni-featured:hover,
+.alumni-profile:hover,
+.alumni-note:hover { transform: translateY(-3px); box-shadow: 0 12px 40px color-mix(in oklab, var(--primary) 8%, transparent); }
+.announcement-row { transition: background-color 220ms ease, padding-left 220ms ease; }
+.announcement-row:hover { background-color: var(--secondary); padding-left: 0.5rem; }
+.announcement-important { border-left: 2px solid var(--gold); padding-left: 1rem; }
+.status-important { background: var(--gold); color: var(--primary); }
+.contact-form,
+.contact-faq { transition: box-shadow 250ms ease, transform 250ms ease; }
+.contact-form:hover,
+.contact-faq:hover { box-shadow: 0 12px 40px color-mix(in oklab, var(--primary) 8%, transparent); }
+.event-card { animation: event-card-in 300ms ease-out both; }
+.event-card-1 { animation-delay: 40ms; }
+.event-card-2 { animation-delay: 80ms; }
+
+@keyframes event-card-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.home-hero-community { transition: transform 250ms ease, filter 250ms ease; }
+.home-hero-community:hover { animation: none; transform: translateY(-3px); filter: drop-shadow(0 8px 18px color-mix(in oklab, var(--primary) 18%, transparent)); }
+.home-hero-grid::after { background: radial-gradient(circle 92px at var(--grid-x) var(--grid-y), color-mix(in oklab, var(--gold) 13%, transparent), transparent 76%); opacity: calc(var(--grid-influence) * 0.48); }
+
+@keyframes mobile-menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
 @media (prefers-reduced-motion: no-preference) {
   @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
   .animate-rise { animation: rise 500ms ease-out both; }
+
+  @keyframes home-hero-line { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes home-hero-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes home-hero-description { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes home-hero-actions { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes home-hero-image { from { transform: scale(1); } to { transform: scale(1.03); } }
+  @keyframes home-section-reveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .home-hero-eyebrow { display: inline-block; animation: home-hero-enter 550ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .home-hero-line { display: inline-block; animation: home-hero-line 600ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .home-hero-line-one { animation-delay: 120ms; }
+  .home-hero-line-two { animation-delay: 240ms; }
+  .home-hero-line-three { animation-delay: 360ms; }
+  .home-hero-description { animation: home-hero-description 550ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both; }
+  .home-hero-actions { animation: home-hero-actions 500ms cubic-bezier(0.22, 1, 0.36, 1) 650ms both; }
+  .home-hero-community { animation: home-hero-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) 820ms both; }
+  .home-hero-image { animation: home-hero-image 15s ease-out both; }
+  .home-reveal { opacity: 0; transform: translateY(20px); }
+  .home-reveal-visible { animation: home-section-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sait-loading-overlay,
+  .sait-loading-content,
+  .sait-loading-sparkle,
+  .sait-loading-progress-fill { animation: none; transition: none; }
+  .mobile-menu,
+  .route-page > .home-reveal,
+  .route-page article,
+  .route-page a > svg,
+  .progress-ring-stroke,
+  .event-card,
+  .people-card,
+  .people-card-avatar,
+  .achievement-stat,
+  .achievement-featured,
+  .achievement-row,
+  .dashboard-stat,
+  .about-value,
+  .about-faculty,
+  .placement-stat,
+  .placement-resource,
+  .about-timeline article,
+  .placement-company,
+  .alumni-featured,
+  .alumni-profile,
+  .alumni-note,
+  .announcement-row,
+  .contact-form,
+  .contact-faq { animation: none; transition: none; transform: none; }
+  .home-hero-line,
+  .home-hero-eyebrow,
+  .home-hero-description,
+  .home-hero-actions,
+  .home-hero-image,
+  .home-reveal,
+  .home-hero-community {
+    opacity: 1;
+    transform: none;
+  }
+
+  .interactive-grid::after { display: none; }
 }

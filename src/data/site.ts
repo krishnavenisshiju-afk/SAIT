@@ -27,7 +27,7 @@ export const people = [
   { name: "Dr. Meera Nair", role: "Faculty Coordinator", team: "Faculty", initials: "MN" },
   { name: "Dr. Arun Mathew", role: "Faculty Advisor", team: "Faculty", initials: "AM" },
   { name: "Nandana Krishnan", role: "President", team: "Executive", initials: "NK" },
-  { name: "Adithya Menon", role: "Secretary", team: "Executive", initials: "AM" },
+  { name: "Adithya Menon", role: "Secretary", team: "Executive", initials: "AdM" },
   { name: "Fathima Riaz", role: "Technical Lead", team: "Tech", initials: "FR" },
   { name: "Joel Thomas", role: "Frontend Lead", team: "Tech", initials: "JT" },
   { name: "Devika Suresh", role: "Media Lead", team: "Media", initials: "DS" },
